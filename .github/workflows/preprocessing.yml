@@ -26,7 +26,8 @@ jobs:
 
       - name: Run preprocessing script
         run: |
-          python preprocessing/automate_Nama-siswa.py
+          python preprocessing/automate_Adit-Hidayat.py
+
 
       - name: Commit and push preprocessing output
         run: |
