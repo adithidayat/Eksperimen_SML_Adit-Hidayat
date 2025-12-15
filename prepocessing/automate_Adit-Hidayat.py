@@ -7,24 +7,25 @@ from sklearn.preprocessing import StandardScaler
 
 def load_data():
     """
-    Load dataset mentah
+    Load dataset mentah (sesuai struktur saat ini)
     """
-    return pd.read_csv("breast_cancer.csv")
+    return pd.read_csv("preprocessing/breast_cancer.csv")
 
 
 def preprocess_data(df):
     """
-    Preprocessing data sesuai eksperimen
+    Preprocessing data (SAMA dengan notebook)
     """
     # Drop kolom tidak relevan
     df = df.drop(columns=["id", "Unnamed: 32"])
 
-    # Encode target
+    # Encoding target
     df["diagnosis"] = df["diagnosis"].map({"M": 1, "B": 0})
 
     if df["diagnosis"].isna().sum() != 0:
         raise ValueError("Target diagnosis mengandung NaN")
 
+    # Split fitur & target
     X = df.drop(columns=["diagnosis"])
     y = df["diagnosis"]
 
@@ -36,6 +37,7 @@ def preprocess_data(df):
         stratify=y
     )
 
+    # Scaling
     scaler = StandardScaler()
     X_train_scaled = scaler.fit_transform(X_train)
     X_test_scaled = scaler.transform(X_test)
@@ -45,9 +47,9 @@ def preprocess_data(df):
 
 def save_data(X_train, X_test, y_train, y_test, columns):
     """
-    Simpan hasil preprocessing
+    Simpan hasil preprocessing (sesuai struktur saat ini)
     """
-    output_dir = "preprocessing/namadataset_preprocessing"
+    output_dir = "preprocessing/breast_cancer_preprocessing"
     os.makedirs(output_dir, exist_ok=True)
 
     pd.DataFrame(X_train, columns=columns).to_csv(
@@ -67,7 +69,7 @@ def main():
     save_data(X_train, X_test, y_train, y_test, columns)
 
     print("Preprocessing otomatis selesai.")
-    print("Output ada di: preprocessing/namadataset_preprocessing")
+    print("Output:", "preprocessing/breast_cancer_preprocessing")
 
 
 if __name__ == "__main__":
