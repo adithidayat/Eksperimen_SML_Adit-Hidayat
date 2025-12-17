@@ -67,8 +67,9 @@ def main():
     save_data(X_train, X_test, y_train, y_test, columns)
 
     print("Preprocessing otomatis selesai.")
-    print("Output ada di: preprocessing/namadataset_preprocessing")
+    print("Output ada di: preprocessing/breast_cancer_preprocessing")
 
 
 if __name__ == "__main__":
     main()
+
