@@ -47,7 +47,7 @@ def save_data(X_train, X_test, y_train, y_test, columns):
     """
     Simpan hasil preprocessing
     """
-    output_dir = "preprocessing/namadataset_preprocessing"
+    output_dir = "preprocessing/breast_cancer_preprocessing"
     os.makedirs(output_dir, exist_ok=True)
 
     pd.DataFrame(X_train, columns=columns).to_csv(
@@ -72,4 +72,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
